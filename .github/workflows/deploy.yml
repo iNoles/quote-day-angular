@@ -32,3 +32,5 @@ jobs:
         with:
           branch: gh-pages  # branch to deploy to
           folder: dist/quote-of-the-day
+        env:
+         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
