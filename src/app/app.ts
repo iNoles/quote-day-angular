@@ -24,7 +24,7 @@ export class App {
 
   getQuote() {
     this.isLoading.set(true);
-    this.http.get<ZenQuote[]>('https://zenquotes.io/api/today')
+    this.http.get<ZenQuote[]>('https://api.allorigins.win/get?url=https://zenquotes.io/api/today')
       .subscribe(data => {
         if (data && data.length > 0) {
           this.quote.set({
