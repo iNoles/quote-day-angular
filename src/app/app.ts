@@ -24,7 +24,7 @@ export class App {
 
   getQuote() {
   this.isLoading.set(true);
-  this.http.get<{ content: string; author: string }>('https://api.quotable.io/random')
+  this.http.get<{ content: string; author: string }>('http://api.quotable.io/random')
     .subscribe({
       next: data => {
         this.quote.set({
