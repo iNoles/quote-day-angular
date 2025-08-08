@@ -24,19 +24,16 @@ export class App {
 
   getQuote() {
   this.isLoading.set(true);
-  this.http.get<any>('https://api.allorigins.win/get?url=' + encodeURIComponent('https://zenquotes.io/api/today'))
+  this.http.get<any>('https://quote-garden.herokuapp.com/api/v3/quotes/random')
     .subscribe({
-      next: (response) => {
-        // response.contents is a JSON string of the original API response
-        const data = JSON.parse(response.contents);
-
-        if (data && data.length > 0) {
+      next: (data) => {
+        if (data?.data?.length > 0) {
+          const q = data.data[0];
           this.quote.set({
-            content: data[0].q,
-            author: data[0].a
+            content: q.quoteText,
+            author: q.quoteAuthor || 'Unknown',
           });
         }
-
         this.isLoading.set(false);
       },
       error: () => {
