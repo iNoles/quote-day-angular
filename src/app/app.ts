@@ -24,22 +24,21 @@ export class App {
 
   getQuote() {
   this.isLoading.set(true);
-  this.http.get<any>('https://quote-garden.herokuapp.com/api/v3/quotes/random')
-    .subscribe({
-      next: (data) => {
-        if (data?.data?.length > 0) {
-          const q = data.data[0];
-          this.quote.set({
-            content: q.quoteText,
-            author: q.quoteAuthor || 'Unknown',
-          });
-        }
-        this.isLoading.set(false);
-      },
-      error: () => {
-        this.isLoading.set(false);
+  const url = encodeURIComponent('https://quote-garden.herokuapp.com/api/v3/quotes/random');
+  this.http.get<any>('https://api.allorigins.win/get?url=' + url).subscribe({
+    next: (response) => {
+      const data = JSON.parse(response.contents);
+      if (data?.data?.length > 0) {
+        const q = data.data[0];
+        this.quote.set({
+          content: q.quoteText,
+          author: q.quoteAuthor || 'Unknown',
+        });
       }
-    });
+      this.isLoading.set(false);
+    },
+    error: () => this.isLoading.set(false)
+  });
 }
   
   safeEncode(text: string) {
