@@ -1,71 +1,59 @@
-# quote-day-angular
+# QuoteOfTheDay
 
-A simple Angular standalone app that displays a **Quote of the Day** fetched from the ZenQuotes API.  
-Includes a loading spinner, a button to fetch new quotes, and a “Tweet This” share feature.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.5.
 
----
+## Development server
 
-## Features
-
-- Fetches the daily quote from [ZenQuotes API](https://zenquotes.io/api/today)
-- Displays quote text and author
-- Loading indicator while fetching
-- Tweet the current quote with a single click
-- Built with Angular standalone components (Angular 16+)
-- Styled with Bootstrap 5
-
----
-
-## Demo
-
-*Add your live demo URL here (e.g., GitHub Pages)*
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v16+ recommended)
-- Angular CLI (`npm install -g @angular/cli`)
-
-### Installation
-
-1. Clone the repo:
-
-   ```bash
-   git clone https://github.com/your-username/quote-day-angular.git
-   cd quote-day-angular
-   ```
-2. Install dependencies:
-
-  ```bash
-  npm install
-  ```
-3. Run the development server:
+To start a local development server, run:
 
 ```bash
 ng serve
 ```
-4. Open your browser at http://localhost:4200
 
----
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-### Deployment
-You can deploy this app easily to GitHub Pages:
+## Code scaffolding
 
-Build the app:
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
 ```bash
-ng build --base-href=/quote-day-angular/
+ng generate component component-name
 ```
-Deploy using angular-cli-ghpages:
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
 ```bash
-npx angular-cli-ghpages --dir=dist/quote-day-angular
+ng generate --help
 ```
 
-### Notes
+## Building
 
-- The app uses the ZenQuotes public API. Be aware of rate limits and attribution requirements: https://zenquotes.io/
-- For local development, you might need to configure CORS proxy or use a different API if you encounter CORS errors.
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
