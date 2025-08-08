@@ -23,21 +23,18 @@ export class App {
   }
 
   getQuote() {
-  this.isLoading.set(true);
-  this.http.get<{ content: string; author: string }>('https://api.quotable.io/random')
-    .subscribe({
-      next: data => {
-        this.quote.set({
-          content: data.content,
-          author: data.author
-        });
-        this.isLoading.set(false);
-      },
-      error: () => {
-        this.isLoading.set(false);
-      }
-    });
-}
+    this.isLoading.set(true);
+    this.http.get<{ id: number; quote: string; author: string }>('https://dummyjson.com/quotes/1')
+      .subscribe({
+        next: data => {
+          this.quote.set({ content: data.quote, author: data.author });
+          this.isLoading.set(false);
+        },
+        error: () => {
+          this.isLoading.set(false);
+        }
+      });
+  }
   
   safeEncode(text: string) {
     return encodeURIComponent(text);
