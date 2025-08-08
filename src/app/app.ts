@@ -23,19 +23,28 @@ export class App {
   }
 
   getQuote() {
-    this.isLoading.set(true);
-    this.http.get<ZenQuote[]>('https://api.allorigins.win/get?url=https://zenquotes.io/api/today')
-      .subscribe(data => {
+  this.isLoading.set(true);
+  this.http.get<any>('https://api.allorigins.win/get?url=' + encodeURIComponent('https://zenquotes.io/api/today'))
+    .subscribe({
+      next: (response) => {
+        // response.contents is a JSON string of the original API response
+        const data = JSON.parse(response.contents);
+
         if (data && data.length > 0) {
           this.quote.set({
             content: data[0].q,
             author: data[0].a
           });
         }
-        this.isLoading.set(false);
-      });
-  }
 
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.isLoading.set(false);
+      }
+    });
+}
+  
   safeEncode(text: string) {
     return encodeURIComponent(text);
   }
