@@ -29,6 +29,10 @@ A lightweight Angular application that displays a random inspirational quote usi
 - DummyJSON Quotes API
 - Standalone Components
 
+## Screenshot
+
+![Main](main.png)
+
 ## Installation
 
 ```bash
